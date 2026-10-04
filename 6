@@ -1,0 +1,26 @@
+#include <iostream>
+
+int main() {
+    using namespace std;
+
+    
+    const double wingArea = 30.0;     // S
+    const double liftCoef = 0.4;      // CL
+
+    
+    double currentVelocities[3] = {100.0, 150.0, 200.0};   // V
+    double airDensities[3] = {1.225, 1.112, 0.909};        // rho
+
+    cout << "Step\tVelocity\tDensity\t\tLift Force\n";
+    cout << "========================================================\n";
+
+    
+    for (int k = 0; k < 3; ++k) {
+        
+        double liftForce = liftCoef * wingArea * 0.5 * airDensities[k] * currentVelocities[k] * currentVelocities[k];
+        
+        cout << k + 1 << "\t" << currentVelocities[k] << "\t\t" << airDensities[k] << "\t\t" << liftForce << '\n';
+    }
+
+    return 0;
+}
