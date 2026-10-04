@@ -1,0 +1,18 @@
+#include <iostream>
+
+int main() {
+    double m = 12000.0;   
+    double L = 140000.0;  
+    double D = 45000.0;   
+    double T = 80000.0;  
+    const double g = 9.81;
+
+    double ax = (T - D) / m;
+
+    double ay = (L - m * g) / m;
+
+    std::cout << "Продольное ускорение по направлению движения (ax): " << ax << " м/с²" << std::endl;
+    std::cout << "Вертикальное ускорение самолета (ay): " << ay << " м/с²" << std::endl;
+
+    return 0;
+}
