@@ -1,0 +1,32 @@
+#include <iostream>
+
+int main() {
+    
+    using namespace std;
+
+    double m_kg, T_newtons, D_newtons;
+    
+    cout << "Enter mass (kg): ";
+    cin >> m_kg;
+    cout << "Enter thrust T (N): ";
+    cin >> T_newtons;
+    cout << "Enter drag D (N): ";
+    cin >> D_newtons;
+
+    
+    double acc = (T_newtons - D_newtons) / m_kg;
+    cout << "Calculated acceleration: " << acc << " m/s2\n";
+
+    
+    if (acc >= 0.0 && acc <= 0.5) {
+        cout << "Flight status: HORIZONTAL FLIGHT\n";
+    } 
+    else if (acc > 0.5) {
+        cout << "Flight status: CLIMB\n";
+    } 
+    else {
+        cout << "Flight status: DESCENT\n";
+    }
+
+    return 0;
+}
