@@ -1,0 +1,40 @@
+#include <vector>
+#include <algorithm>
+#include <iomanip>
+
+void print(const char* title, const std::vector<double>& v) {
+    std::cout << title;
+    if (v.empty()) std::cout << "(пусто)";
+    for (double h : v) std::cout << std::fixed << std::setprecision(2) << h << " ";
+    std::cout << "\n";
+}
+
+void removeBelow10(std::vector<double>& heights) {
+    auto new_end = std::remove_if(heights.begin(), heights.end(),
+                                  [](double h) { return h < 10.0; });
+    heights.erase(new_end, heights.end());   
+}
+
+int main() {
+    double v0 = 50.0, g = 9.8, dt = 1.0;
+    std::vector<double> heights;
+    for (double t = 0.0; t <= 1000.0; t += dt) {
+        double h = v0 * t - 0.5 * g * t * t;
+        if (h < 0) break;
+        heights.push_back(h);
+    }
+
+    print("До:    ", heights);
+    removeBelow10(heights);
+    print("После: ", heights);
+
+    
+    std::vector<double> all_low = {0.0, 3.5, 9.9};
+    removeBelow10(all_low);
+    print("Все < 10:        ", all_low);
+
+    std::vector<double> none_low = {10.0, 25.0, 40.0};
+    removeBelow10(none_low);
+    print("Ничего не уходит: ", none_low);
+    return 0;
+}
